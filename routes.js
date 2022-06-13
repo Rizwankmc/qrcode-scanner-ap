@@ -8,7 +8,7 @@ router.get("/distributeCards", async (req, res) => {
   res.send({ code: 200, players });
 });
 
-router.post("scanCardData", async (req, res) => {
+router.post("/scanCardData", async (req, res) => {
   const { cardData } = req.body;
   let player = {
     label: players.length + 1,
