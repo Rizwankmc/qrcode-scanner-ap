@@ -7,7 +7,11 @@ dotenv.config();
 
 const app = express();
 
-app.use(cors());
+app.use(
+  cors({
+    origin: ["https://rizwankmc.github.io/"],
+  })
+);
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
