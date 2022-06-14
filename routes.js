@@ -30,8 +30,8 @@ router.post("/scanCardData", async (req, res) => {
   player.cards.push(cardData);
   players[index] = player;
   if (player.cards.length >= 2) {
-    console.log("next player", players[index + 1]);
-    if (players[index + 1]) {
+    console.log("next player", players[index]);
+    if (index + 1 <= players.length) {
       res.send({ code: 200, players, currentPlayer: players[index + 1] });
     } else {
       res.send({ code: 200, msg: "scan complete", players });
