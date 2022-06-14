@@ -17,16 +17,12 @@ router.get("/distributeCards", async (req, res) => {
 });
 
 router.post("/scanCardData", async (req, res) => {
-  let { cardData, currentPlayer } = req.body;
-  console.log("currentplayer", currentPlayer);
+  let { cardData } = req.body;
   if (cardData.length === 0) {
     return res.send({ code: 200, players, currentPlayer });
   }
-  if (!currentPlayer?.name) {
-    currentPlayer = players[0];
-  }
-  let player = players.find((el) => el.name === currentPlayer.name);
-  let index = players.findIndex((el) => el.name === currentPlayer.name);
+  let player = players.find((el) => el.cards.length < 2);
+  let index = players.findIndex((el) => el.name < 2);
   player.cards.push(cardData);
   players[index] = player;
   if (player.cards.length >= 2) {
