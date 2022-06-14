@@ -19,7 +19,11 @@ router.get("/distributeCards", async (req, res) => {
 router.post("/scanCardData", async (req, res) => {
   let { cardData } = req.body;
   if (cardData.length === 0) {
-    return res.send({ code: 200, players, currentPlayer });
+    return res.send({
+      code: 200,
+      players,
+      currentPlayer: players.find((el) => el.cards.length < 2),
+    });
   }
   let player = players.find((el) => el.cards.length < 2);
   let index = players.findIndex((el) => el.name < 2);
