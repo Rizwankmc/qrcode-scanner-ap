@@ -22,7 +22,7 @@ router.post("/scanCardData", async (req, res) => {
   if (cardData.length === 0) {
     return res.send({ code: 200, players, currentPlayer });
   }
-  if (!currentPlayer.name) {
+  if (!currentPlayer?.name) {
     currentPlayer = players[0];
   }
   let player = players.find((el) => el.name === currentPlayer.name);
