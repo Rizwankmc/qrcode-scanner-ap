@@ -41,4 +41,15 @@ router.post("/scanCardData", async (req, res) => {
   }
 });
 
+router.get("/reset", async (req, res) => {
+  let p = [];
+  players.forEach((plaayer) => {
+    p.push({ ...plaayer, cards: [] });
+  });
+
+  players = [...p];
+
+  res.send({ code: 200, players });
+});
+
 export default router;
