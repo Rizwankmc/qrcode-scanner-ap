@@ -17,8 +17,8 @@ router.get("/distributeCards", async (req, res) => {
 });
 
 router.post("/scanCardData", async (req, res) => {
-  console.log("currentplayer", currentPlayer);
   let { cardData, currentPlayer } = req.body;
+  console.log("currentplayer", currentPlayer);
   if (cardData.length === 0) {
     return res.send({ code: 200, players, currentPlayer });
   }
