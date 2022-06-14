@@ -9,7 +9,7 @@ const app = express();
 
 app.use(
   cors({
-    origin: ["https://rizwankmc.github.io/"],
+    origin: ["https://rizwankmc.github.io", "https://qrcode-scanner.github.io"],
   })
 );
 app.use(express.json());
