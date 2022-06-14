@@ -17,6 +17,7 @@ router.get("/distributeCards", async (req, res) => {
 });
 
 router.post("/scanCardData", async (req, res) => {
+  console.log("currentplayer", currentPlayer);
   let { cardData, currentPlayer } = req.body;
   if (cardData.length === 0) {
     return res.send({ code: 200, players, currentPlayer });
@@ -28,7 +29,8 @@ router.post("/scanCardData", async (req, res) => {
   let index = players.findIndex((el) => el.name === currentPlayer.name);
   player.cards.push(cardData);
   players[index] = player;
-  if (player.cards.length === 2) {
+  if (player.cards.length >= 2) {
+    console.log("next player", players[index + 1]);
     if (players[index + 1]) {
       res.send({ code: 200, players, currentPlayer: players[index + 1] });
     } else {
